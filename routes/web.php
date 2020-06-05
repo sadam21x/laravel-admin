@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'PagesController@dashboard')->name('dashboard');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Master data route
+
+// Categories
+Route::get('/categories', 'master\CategoriesController@index');
