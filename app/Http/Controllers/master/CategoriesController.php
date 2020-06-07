@@ -16,7 +16,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('master/categories/index');
+        $categories = Categories::all();
+        return view('master/categories/index', ['categories' => $categories]);
     }
 
     /**
@@ -37,7 +38,20 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validating request
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $custommessage = [
+            'name.required' => 'Nama kategori wajib diisi.'
+        ];
+
+        $this->validate($request, $rules, $custommessage);
+
+        // Store data to database and redirect user to categories index with alert status
+        Categories::create($request->all());
+        return redirect('/categories')->with('status', 'Kategori baru berhasil ditambahkan');
     }
 
     /**
@@ -57,9 +71,11 @@ class CategoriesController extends Controller
      * @param  \App\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categories $categories)
+    public function edit()
     {
-        //
+        $categories = Categories::find($_POST['id']);
+        $categories->get();
+        return json_encode($categories);
     }
 
     /**
@@ -71,7 +87,23 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, Categories $categories)
     {
-        //
+        // Validating request
+        $rules = [
+            'name' => 'required'
+        ];
+
+        $custommessage = [
+            'name.required' => 'Nama kategori wajib diisi.'
+        ];
+
+        $this->validate($request, $rules, $custommessage);
+
+        Categories::where('id', $request->id)
+            ->update([
+                'name' => $request->name
+            ]);
+
+        return redirect('/categories')->with('status', 'Perubahan berhasil disimpan.');
     }
 
     /**
@@ -80,8 +112,9 @@ class CategoriesController extends Controller
      * @param  \App\Categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categories $categories)
+    public function destroy($id)
     {
-        //
+        Categories::destroy($id);
+        return redirect('/categories')->with('status', 'Kategori berhasil dihapus');
     }
 }

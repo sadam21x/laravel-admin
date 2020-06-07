@@ -8,10 +8,21 @@
 
 @section('konten')
 <div class="col-md-10">
-    <div class="tomboltambahdata btn btn-primary mb-3">
+    {{-- Alert status --}}
+    @if (session('status'))
+    <div class="alert alert-success alert-dismissible fade show">
+        {{ session('status') }}
+        <button type="button" class="close text-white" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
+    <button type="button" class="tomboltambahdata btn btn-primary mb-3" data-toggle="modal" data-target="#modal-form">
         <i class="fas fa-plus-square mr-1"></i>
         TAMBAH KATEGORI BARU
-    </div>
+    </button>
+
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -22,34 +33,92 @@
             </tr>
         </thead>
         <tbody>
+            @foreach ($categories as $categories)
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <th scope="row">{{ $loop->iteration }}</th>
+                <td>{{ $categories->id }}</td>
+                <td>{{ $categories->name }}</td>
                 <td class="aksi">
-                    <a href="#" class="btn btn-info"><i class="fas fa-edit mr-1"></i>EDIT</a>
-                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i>DELETE</a>
+                    <a href="" class="tomboleditdata btn btn-sm btn-info" data-id="{{ $categories->id }}" data-toggle="modal" data-target="#modal-form">
+                        <i class="fas fa-edit mr-1"></i>
+                        EDIT
+                    </a>
+                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                        data-target="#delete-confirm">
+                        <i class="fas fa-trash-alt mr-1"></i>
+                        Delete
+                    </button>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td class="aksi">
-                    <a href="#" class="btn btn-info"><i class="fas fa-edit mr-1"></i>EDIT</a>
-                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i>DELETE</a>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td class="aksi">
-                    <a href="#" class="btn btn-info"><i class="fas fa-edit mr-1"></i>EDIT</a>
-                    <a href="#" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i>DELETE</a>
-                </td>
-            </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal-form" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-form-lable">Tambah Kategori Baru</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('categories-add') }}" method="POST">
+                    @csrf
+
+                    <input type="hidden" name="id" id="id">
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">Nama Kategori:</label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                            name="name" value="{{ old('name') }}" autocomplete="off">
+
+                        @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">BATAL</button>
+                        <button type="submit" class="btn btn-primary">TAMBAH</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete confirm modal -->
+<div class="modal fade" id="delete-confirm" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">
+                    Apakah anda yakin ingin menghapus kategori ini?
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('categories-delete', $categories->id) }}" method="POST">
+                @method('delete')
+                @csrf
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">BATAL</button>
+                    <button type="submit" class="btn btn-danger">YA</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('extra-script')
+{{-- Script modal dialog --}}
+<script src="{{ asset('/js/modal-categories.js') }}"></script>
 @endsection
