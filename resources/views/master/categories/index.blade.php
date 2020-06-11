@@ -7,7 +7,7 @@
 @section('header-title', 'Categories')
 
 @section('konten')
-<div class="col-md-10">
+<div class="col-md-12">
     {{-- Alert status --}}
     @if (session('status'))
     <div class="alert alert-success alert-dismissible fade show">
@@ -43,11 +43,16 @@
                         <i class="fas fa-edit mr-1"></i>
                         EDIT
                     </a>
-                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
-                        data-target="#delete-confirm">
-                        <i class="fas fa-trash-alt mr-1"></i>
-                        Delete
-                    </button>
+                    
+                    <form action="{{ route('categories-delete', $categories->id) }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data kategori ini?');">
+                            <i class="fas fa-trash-alt mr-1"></i>
+                            DELETE
+                        </button>
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -87,32 +92,6 @@
                     </div>
                 </form>
             </div>
-        </div>
-    </div>
-</div>
-
-<!-- Delete confirm modal -->
-<div class="modal fade" id="delete-confirm" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">
-                    Apakah anda yakin ingin menghapus kategori ini?
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('categories-delete', $categories->id) }}" method="POST">
-                @method('delete')
-                @csrf
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">BATAL</button>
-                    <button type="submit" class="btn btn-danger">YA</button>
-                </div>
-            </form>
         </div>
     </div>
 </div>

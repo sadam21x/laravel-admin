@@ -4,6 +4,7 @@ $(function() {
         
         $('#modal-form-lable').html('Tambah Kategori Baru');
         $('.modal-footer button[type=submit]').html('TAMBAH');
+        $('.modal-body form').attr('action', '/categories');
         $('#name').val('');
     });
 

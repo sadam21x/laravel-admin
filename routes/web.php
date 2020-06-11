@@ -31,3 +31,12 @@ Route::post('/categories', 'master\CategoriesController@store')->name('categorie
 Route::delete('/categories/{id}', 'master\CategoriesController@destroy')->name('categories-delete');
 Route::post('/categories-edit', 'master\CategoriesController@edit')->name('categories-edit');
 Route::post('/categories-update', 'master\CategoriesController@update')->name('categories-update');
+
+// Customers
+Route::get('/customers', 'master\CustomersController@index')->name('customers');
+Route::get('/customers-city', 'master\CustomersController@city')->name('customers-city');
+Route::post('/customers', 'master\CustomersController@store')->name('customers-add');
+Route::delete('/customers/{id}', 'master\CustomersController@destroy')->name('customers-delete');
+Route::post('/customers-detail', 'master\CustomersController@show')->name('customers-edit');
+Route::post('/customers-edit', 'master\CustomersController@edit')->name('customers-edit');
+Route::post('/customers-update', 'master\CustomersController@update')->name('customers-update');

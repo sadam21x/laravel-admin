@@ -97,19 +97,19 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../tables/data.html" class="nav-link">
+                                    <a href="{{ route('customers') }}" class="nav-link">
                                         <i class="fas fa-user-friends nav-icon"></i>
                                         <p>Customers</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../tables/jsgrid.html" class="nav-link">
+                                    <a href="{{ route('customers') }}" class="nav-link">
                                         <i class="fas fa-carrot nav-icon"></i>
                                         <p>Products</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../tables/jsgrid.html" class="nav-link">
+                                    <a href="{{ route('customers') }}" class="nav-link">
                                         <i class="fas fa-users-cog nav-icon"></i>
                                         <p>Users</p>
                                     </a>
@@ -199,7 +199,7 @@
     <script src="{{ asset('/adminlte/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('/adminlte/dist/js/demo.js') }}"></script>
-
+    
     <!-- Script tambahan -->
     @yield('extra-script')
 </body>

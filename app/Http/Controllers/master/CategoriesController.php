@@ -51,7 +51,7 @@ class CategoriesController extends Controller
 
         // Store data to database and redirect user to categories index with alert status
         Categories::create($request->all());
-        return redirect('/categories')->with('status', 'Kategori baru berhasil ditambahkan');
+        return redirect('/categories')->with('status', 'Data kategori baru berhasil ditambahkan');
     }
 
     /**
@@ -115,6 +115,6 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         Categories::destroy($id);
-        return redirect('/categories')->with('status', 'Kategori berhasil dihapus');
+        return redirect('/categories')->with('status', 'Data kategori berhasil dihapus');
     }
 }

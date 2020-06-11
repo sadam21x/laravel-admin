@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Categories extends Model
+class Customer extends Model
 {
-    protected $table = 'categories';
+    protected $table = 'customers';
     protected $guarded = ['id'];
-
 }
