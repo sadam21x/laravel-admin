@@ -76,7 +76,7 @@
                         <!-- Add icons to the links using the .nav-icon class
                                 with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="nav-link">
+                            <a href="{{ url('/') }}" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -91,25 +91,25 @@
                             </a>
                             <ul class="nav nav-treeview pl-3">
                                 <li class="nav-item">
-                                    <a href="{{ route('categories') }}" class="nav-link">
+                                    <a href="{{ url('/categories') }}" class="nav-link">
                                         <i class="fas fa-stream nav-icon"></i>
                                         <p>Categories</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('customers') }}" class="nav-link">
+                                    <a href="{{ url('/customers') }}" class="nav-link">
                                         <i class="fas fa-user-friends nav-icon"></i>
                                         <p>Customers</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('customers') }}" class="nav-link">
+                                    <a href="{{ url('/products') }}" class="nav-link">
                                         <i class="fas fa-carrot nav-icon"></i>
                                         <p>Products</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('customers') }}" class="nav-link">
+                                    <a href="{{ url('users') }}" class="nav-link">
                                         <i class="fas fa-users-cog nav-icon"></i>
                                         <p>Users</p>
                                     </a>

@@ -44,7 +44,7 @@
                         EDIT
                     </a>
                     
-                    <form action="{{ route('categories-delete', $categories->id) }}" method="POST" class="d-inline">
+                    <form action="{{ url($categories->id) }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
 
@@ -72,7 +72,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('categories-add') }}" method="POST">
+                <form action="{{ url('/categories') }}" method="POST">
                     @csrf
 
                     <input type="hidden" name="id" id="id">

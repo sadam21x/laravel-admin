@@ -50,7 +50,7 @@
                         EDIT
                     </a>
 
-                    <form action="{{ route('customers-delete', $customers->id) }}" method="POST" class="d-inline">
+                    <form action="{{ url($customers->id) }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
 
@@ -78,7 +78,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('customers-add') }}" method="POST">
+                <form action="{{ url('/customers') }}" method="POST">
                     @csrf
 
                     <input type="hidden" name="id" id="id">
