@@ -44,7 +44,7 @@
                         EDIT
                     </a>
                     
-                    <form action="{{ url($categories->id) }}" method="POST" class="d-inline">
+                    <form action="{{ url('/categories', $categories->id) }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
 

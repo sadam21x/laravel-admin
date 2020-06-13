@@ -50,7 +50,7 @@
                         EDIT
                     </a>
 
-                    <form action="{{ url($customers->id) }}" method="POST" class="d-inline">
+                    <form action="{{ url('/customers', $customers->id) }}" method="POST" class="d-inline">
                         @method('delete')
                         @csrf
 

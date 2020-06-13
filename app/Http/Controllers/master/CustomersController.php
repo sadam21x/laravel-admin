@@ -62,7 +62,7 @@ class CustomersController extends Controller
         ];
 
         $custommessage = [
-            'first_name.required' => 'Nama kategori wajib diisi.',
+            'first_name.required' => 'Nama depan wajib diisi.',
             'phone.required' => 'Nomor telepon wajib diisi.',
             'phone.max' => 'Panjang karaakter maksimal 12 digit.',
             'email.required' => 'Email wajib diisi.',
