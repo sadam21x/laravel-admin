@@ -20,7 +20,7 @@
 
     <button type="button" class="tomboltambahdata btn btn-primary mb-3" data-toggle="modal" data-target="#modal-form">
         <i class="fas fa-plus-square mr-1"></i>
-        TAMBAH PELANGGAN BARU
+        TAMBAH PRODUK BARU
     </button>
 
     <table class="table table-striped table-bordered">

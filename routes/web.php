@@ -48,3 +48,7 @@ Route::delete('/products/{id}', 'master\ProductsController@destroy')->name('prod
 Route::post('/products-detail', 'master\ProductsController@show')->name('products-detail');
 Route::post('/products-edit', 'master\ProductsController@edit')->name('products-edit');
 Route::post('/products-update', 'master\ProductsController@update')->name('products-update');
+
+// Point of sales
+Route::get('/pos', 'transaksi\PosController@index');
+Route::post('/pos-tambah-product', 'transaksi\PosController@addproduct');
