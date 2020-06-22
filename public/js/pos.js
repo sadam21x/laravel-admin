@@ -1,6 +1,32 @@
-const { update } = require("lodash");
+// const { update } = require("lodash");
 
 $(function () {
+
+    $('#categories').on('change', function() {
+        var id_category = $(this).val();
+        var token = $('meta[name="csrf-token"]').attr('content');
+        var url = '/pos-kategori-product';
+
+        $.ajax({
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': token
+            },
+            url: url,
+            data: {id : id_category},
+            dataType: 'json',
+            success: function(data){
+                console.log(data);
+                $('#product').empty();
+
+                $.each(data, function (id, name) {
+                    // $('#city').append(new Option(name, id));
+                    $('#product').append(new Option(name, id));
+                });
+            }
+        });
+
+    });
 
     $('.tombolTambahProduct').on('click', function () {
         var table = $('.table_item');

@@ -24,6 +24,20 @@ class PosController extends Controller
         return view('transaksi/pos', compact('products'), compact('customers'), compact('categories'));
     }
 
+    // Menampilkan produk berdasarkan kategori
+    public function product_category()
+    {
+        if( $_POST['id'] == 'all' ){
+            $product = Product::all()->pluck('name', 'id');
+            return json_encode($product);
+        } else {
+            $product = Product::where('category_id', $_POST['id'])
+            ->pluck('name', 'id');
+        }
+
+        return json_encode($product);
+    }
+
     // Menambahkan product ke daftar belanja
     public function addproduct()
     {

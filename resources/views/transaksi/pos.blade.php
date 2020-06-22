@@ -36,19 +36,36 @@
                     </div>
                 </div>
 
-                <div class="form-inline mt-2">
-                    <div class="form-group mb-1">
-                        <h5>Tambah Produk : </h5>
+                <div class="form-row my-2">
+                    <h5>Tambah Produk</h5>
+                </div>
+
+                <div class="form-row mt-2">
+                    <div class="form-group mx-2">
+                        <label for="categories">Kategori</label>
+                        <select id="categories" name="categories" class="form-control">
+                            <option value="all">Semua</option>
+                            @foreach (App\Categories::all() as $categories)
+                            <option value="{{ $categories->id }}">{{ $categories->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    <div class="form-group mx-sm-3 mb-2">
+
+                    <div class="form-group mx-2">
+                        <label for="product">Produk</label>
                         <select id="product" name="product" class="form-control">
                             @foreach ($products as $products)
                             <option value="{{ $products->id }}">{{ $products->name }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <a class="btn btn-sm btn-success mb-2 text-white tombolTambahProduct">Tambah</a>
+
+                    <div class="form-group col-md-4 mt-4">
+                        <a class="btn btn-sm btn-success mt-2 text-white tombolTambahProduct">Tambah</a>
+                    </div>
                 </div>
+
+                
 
                 <table class="table table-hover table_item my-4">
                     <thead class="thead-dark">
@@ -168,6 +185,6 @@
 @section('extra-script')
 {{-- Script modal dialog --}}
 {{-- <script src="{{ asset('/js/modal-categories.js') }}"></script> --}}
-{{-- <script src="{{ asset('/js/payment.js') }}"></script> --}}
+<script src="{{ asset('/js/payment.js') }}"></script>
 <script src="{{ asset('/js/pos.js') }}"></script>
 @endsection

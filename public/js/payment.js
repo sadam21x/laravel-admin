@@ -25,10 +25,4 @@ $(function(){
         }
     });
 
-    // Total bayar
-    $('.table_item > tbody:last-child').on('change', function() {
-        var price_total = $('#price_total').val();
-        var jumlah_product = $('.table_item tr').length;
-        console.log(jumlah_product);
-    });
 });
