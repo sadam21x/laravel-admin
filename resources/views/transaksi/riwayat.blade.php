@@ -26,7 +26,7 @@
                 <th scope="col">TANGGAL</th>
                 <th scope="col">STAFF</th>
                 <th scope="col">PELANGGAN</th>
-                <th scope="col">AKSI</th>
+                <th colspan="2" scope="col">AKSI</th>
             </tr>
         </thead>
         <tbody>
@@ -41,9 +41,14 @@
                     {{ App\Customer::where('id', $sales->customer_id)->value('last_name') }}
                 </td>
                 <td class="aksi">
-                    <a href="{{ url('/riwayattransaksi', $sales->id) }}" class="btn btn-sm btn-secondary">
+                    <a href="{{ url('/riwayattransaksi', $sales->id) }}" class="btn btn-sm btn-info">
                         <i class="fas fa-info-circle mr-1"></i>
                         Detail
+                    </a>
+
+                    <a href="{{ url('/printinvoice', $sales->id) }}" class="btn btn-sm btn-secondary">
+                        <i class="fas fa-print mr-1"></i>
+                        Print Invoice
                     </a>
                 </td>
             </tr>

@@ -65,7 +65,7 @@
                         <img src="{{ asset('/img/sadam.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Sadam (ADMIN)</a>
+                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
                 </div>
 
@@ -144,12 +144,18 @@
                                         <p>Edit Profil Saya</p>
                                     </a>
                                 </li>
+
                                 <li class="nav-item pl-3">
-                                    <a href="../tables/data.html" class="nav-link">
+                                    <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt nav-icon"></i>
                                         <p>Logout</p>
                                     </a>
                                 </li>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </ul>
                         </li>
 

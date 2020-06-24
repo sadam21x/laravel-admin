@@ -61,3 +61,6 @@ Route::post('/pos-tambah-product', 'transaksi\PosController@addproduct');
 // Riwayat transaksi
 Route::get('/riwayattransaksi', 'transaksi\TransaksiController@index');
 Route::get('/riwayattransaksi/{id}', 'transaksi\TransaksiController@show');
+Route::get('/printinvoice/{id}', 'transaksi\TransaksiController@print_invoice');
+
+// Route::get('/coba/{id}', 'transaksi\TransaksiController@show_print');
