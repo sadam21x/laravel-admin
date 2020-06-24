@@ -49,6 +49,9 @@ Route::post('/products-detail', 'master\ProductsController@show')->name('product
 Route::post('/products-edit', 'master\ProductsController@edit')->name('products-edit');
 Route::post('/products-update', 'master\ProductsController@update')->name('products-update');
 
+// Users
+Route::get('/users', 'UsersController@index');
+
 // Point of sales
 Route::get('/pos', 'transaksi\PosController@index');
 Route::post('/pos', 'transaksi\PosController@store');

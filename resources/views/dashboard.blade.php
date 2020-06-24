@@ -19,9 +19,9 @@
                 </div>
                 <h5 class="card-title">CATEGORIES</h5>
                 <div class="display-4">
-                    37
+                    {{ $total_categories }}
                 </div>
-                <a href="">
+                <a href="{{ url('/categories') }}">
                     <p class="card-text text-white">
                         Lihat detail
                         <i class="fas fa-angle-double-right ml-2"></i>
@@ -37,9 +37,9 @@
                 </div>
                 <h5 class="card-title">PRODUCTS</h5>
                 <div class="display-4">
-                    37
+                    {{ App\Product::count() }}
                 </div>
-                <a href="">
+                <a href="{{ url('/products') }}">
                     <p class="card-text text-white">
                         Lihat detail
                         <i class="fas fa-angle-double-right ml-2"></i>
@@ -55,9 +55,9 @@
                 </div>
                 <h5 class="card-title">CUSTOMERS</h5>
                 <div class="display-4">
-                    219
+                    {{ $total_customer }}
                 </div>
-                <a href="">
+                <a href="{{ url('/customers') }}">
                     <p class="card-text text-white">
                         Lihat detail
                         <i class="fas fa-angle-double-right ml-2"></i>
@@ -73,9 +73,9 @@
                 </div>
                 <h5 class="card-title">USERS</h5>
                 <div class="display-4">
-                    5
+                    {{ App\User::count() }}
                 </div>
-                <a href="">
+                <a href="{{ url('/users') }}">
                     <p class="card-text text-white">
                         Lihat detail
                         <i class="fas fa-angle-double-right ml-2"></i>
