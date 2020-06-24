@@ -20,7 +20,9 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <form action="">
+            <form action="{{ url('/pos') }}" method="POST">
+                @csrf
+                
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="staff">Staff</label>
@@ -70,13 +72,13 @@
                 <table class="table table-hover table_item my-4">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Product ID</th>
-                            <th scope="col">Product Name</th>
+                            <th scope="col">ID Produk</th>
+                            <th scope="col">Nama Produk</th>
                             <th scope="col">Qty</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Discout (%)</th>
-                            <th scope="col">Price Total</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Harga</th>
+                            <th scope="col">Diskon (%)</th>
+                            <th scope="col">Harga Akhir</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
 
@@ -91,23 +93,15 @@
                         <h3>Payment</h3>
 
                         <div class="form-group row">
-                            <label for="price_total" class="col-sm-4 col-form-label">Price Total (IDR)</label>
+                            <label for="total_item" class="col-sm-4 col-form-label">Total Item</label>
                             <div class="col-sm-4">
-                                <input type="text" readonly class="form-control-plaintext" id="price_total"
-                                    name="price_total" value="0">
+                                <input type="text" readonly class="form-control-plaintext" id="total_item"
+                                    name="total_item" value="0">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="discount_total" class="col-sm-4 col-form-label">Discount (IDR)</label>
-                            <div class="col-sm-4">
-                                <input type="text" readonly class="form-control-plaintext" id="discount_total"
-                                    name="discount_total" value="0">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="final_price" class="col-sm-4 col-form-label">Final Price (IDR)</label>
+                            <label for="final_price" class="col-sm-4 col-form-label">Total Bayar (IDR)</label>
                             <div class="col-sm-4">
                                 <input type="text" readonly class="form-control-plaintext" id="final_price"
                                     name="final_price" value="0">

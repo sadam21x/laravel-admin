@@ -51,5 +51,6 @@ Route::post('/products-update', 'master\ProductsController@update')->name('produ
 
 // Point of sales
 Route::get('/pos', 'transaksi\PosController@index');
+Route::post('/pos', 'transaksi\PosController@store');
 Route::post('/pos-kategori-product', 'transaksi\PosController@product_category');
 Route::post('/pos-tambah-product', 'transaksi\PosController@addproduct');

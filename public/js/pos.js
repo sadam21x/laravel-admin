@@ -1,7 +1,18 @@
-// const { update } = require("lodash");
-
 $(function () {
 
+    /*
+    Mencegah submit form via tombol enter
+     */
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          return false;
+        }
+    });
+
+    /*
+    Menampilkan list produk berdasarkan kategori yang dipilih
+    */
     $('#categories').on('change', function() {
         var id_category = $(this).val();
         var token = $('meta[name="csrf-token"]').attr('content');
@@ -20,7 +31,6 @@ $(function () {
                 $('#product').empty();
 
                 $.each(data, function (id, name) {
-                    // $('#city').append(new Option(name, id));
                     $('#product').append(new Option(name, id));
                 });
             }
@@ -28,11 +38,16 @@ $(function () {
 
     });
 
+    /*
+    Menambahkan produk yang dipilih ke list trannsaksi (tabel)
+    */
+   var i = -1;
     $('.tombolTambahProduct').on('click', function () {
         var table = $('.table_item');
         const id = $('#product').val();
         var token = $('meta[name="csrf-token"]').attr('content');
         var url = '/pos-tambah-product';
+        i = i + 1;
 
         $.ajax({
             type: 'POST',
@@ -46,46 +61,94 @@ $(function () {
             dataType: 'json',
             success: function (data) {
                 $('.table_item > tbody:last-child').append(
-                    '<tr>' +
-                    '<td><h5 id="id_product">' + data.id + '</h5></td>' +
-                    '<td><h5 id="nama_product">' + data.name + '</h5></td>' +
-                    '<td><input type="number" id="qty" name="qty" value="1"></td>' +
-                    '<td><input type="text" readonly class="form-control-plaintext" id="price_product" value="' + data.price + '"></td>' +
-                    '<td><input type="number" id="discount" name="discount" value="0"></td>' +
-                    '<td><h5 id="total_price">' + data.price + '</h5></td>' +
-                    // '<td><input class="form-control" readonly id="total_price" val="' + data.price + '"></td>' +
+                    '<tr class="product-row">' +
+                    '<td class="product-id"><input type="text" readonly class="form-control-plaintext text-center" id="product_id_'+ i +'" name="product_id_'+ i +'" value="' + data.id + '"></td>' +
+                    '<td class="product-name"><input type="text" readonly class="form-control-plaintext text-center" id="product_name_'+ i +'" name="product_name_'+ i +'" value="' + data.name + '"></td>' +
+                    '<td class="product-qty"><input type="number" min="1" id="product_qty_'+ i +'" name="product_qty_'+ i +'" value="1"></td>' +
+                    '<td class="product-price"><input type="number" readonly class="form-control-plaintext text-center" id="product_price_'+ i +'" name="product_price_'+ i +'" value="' + data.price + '"></td>' +
+                    '<td class="product-discount"><input type="number" min="0" max="100" id="product_discount_'+ i +'" name="product_discount'+ i +'" value="0"></td>' +
+                    '<td class="product-final-price"><input type="number" readonly class="form-control-plaintext text-center" id="product_final_price_'+ i +'" name="product_final_price_'+ i +'" value="' + data.price + '"></td>' +
                     '<td><button type="button" class="btn btn-danger btn-sm buttonremoveproduct">Remove</button></td>' +
                     '</tr>');
 
-                
-                // $(document).on('change', '#qty', function () {
-                //     var total_harga = $(this).val() * $(this).closest('tr').find('#price_product').val();
-                //     console.log(total_harga);
-                // });
+                    recalculateCart();
+
+                    // trigger function update qty dan harga total
+                    $('.product-qty input').on('change', function () {
+                        var parent = $(this).parent().parent();
+                        updateQty(this, parent);
+                    });
+
+                    // trigger function discount product
+                    $('.product-discount input').on('change', function(){
+                        var parent = $(this).parent().parent();
+                        updateDiscount(this, parent);
+                    });
+
+                    // trigger function hapus product
+                    $('.buttonremoveproduct').on('click', function() {
+                        var parent = $(this).parent().parent();
+                        removeProduct(parent);
+                    });
 
 
+                    // function kalkulasi ulang total keranjang belanja
+
+                    function recalculateCart()
+                    {
+                        var total_price = 0;
+                        var total_product = 0;
+
+                        $('.product-final-price').each(function(){
+                            var x = parseFloat( $(this).children().val() );
+                            total_price += x;
+                        });
+
+                        $('.product-qty').each(function(){
+                            var x = parseFloat( $(this).children().val() );
+                            total_product += x;
+                        });
+
+                        $('#final_price').val(total_price);
+                        $('#total_item').val(total_product);
+
+                    }
+
+                    // function update qty dan harga total
+                    function updateQty(qtyInput, parent)
+                    {
+                        var qty = $(qtyInput).val();
+                        var price = $(parent).children('.product-price').children().val();
+                        var final_price = qty * price;
+
+                        $(parent).children('.product-final-price').children().val(final_price);
+
+                        recalculateCart();
+                    }
+
+                    // function update discount dan harga
+                    function updateDiscount(discountInput, parent)
+                    {
+                        var discount = $(discountInput).val();
+                        var before_disc = $(parent).children('.product-final-price').children().val();
+                        var price_disc = before_disc * discount / 100;
+                        var after_disc = before_disc - price_disc; 
+
+                        $(parent).children('.product-final-price').children().val(after_disc);
+
+                        recalculateCart();
+                    }
+
+                    // function hapus product
+                    function removeProduct(parent)
+                    {
+                        $(parent).remove();
+                        recalculateCart();
+                    }
             }
 
         });
 
-        $('.buttonremoveproduct').on('click', function () {
-            $(this).closest('tr').remove();
-            return false;
-        });
-
     });
-
-    $('#qty').change(function() {
-        update_quantity(this);
-    });
-
-    function recalculate_cart()
-    {
-        var subtotal = 0;
-
-        $('.table_item').each(function() {
-            subtotal += parseFloat($(this).children('tr').text());
-        });
-    }
 
 });
