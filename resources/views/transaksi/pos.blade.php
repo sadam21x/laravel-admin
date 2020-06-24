@@ -131,7 +131,7 @@
                 </div>
 
                 <div class="form-group d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary my-3">SAVE AND PRINT INVOICE</button>
+                    <button type="submit" class="btn btn-primary my-3">SAVE</button>
                 </div>
 
             </form>

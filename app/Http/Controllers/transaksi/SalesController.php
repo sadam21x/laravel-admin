@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\transaksi;
 
-use App\SalesDetail;
+use App\Sales;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class SalesDetailController extends Controller
+class SalesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class SalesDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SalesDetail  $salesDetail
+     * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function show(SalesDetail $salesDetail)
+    public function show(Sales $sales)
     {
         //
     }
@@ -52,10 +54,10 @@ class SalesDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SalesDetail  $salesDetail
+     * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function edit(SalesDetail $salesDetail)
+    public function edit(Sales $sales)
     {
         //
     }
@@ -64,10 +66,10 @@ class SalesDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SalesDetail  $salesDetail
+     * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SalesDetail $salesDetail)
+    public function update(Request $request, Sales $sales)
     {
         //
     }
@@ -75,10 +77,10 @@ class SalesDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SalesDetail  $salesDetail
+     * @param  \App\Sales  $sales
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SalesDetail $salesDetail)
+    public function destroy(Sales $sales)
     {
         //
     }

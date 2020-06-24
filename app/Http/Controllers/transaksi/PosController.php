@@ -88,6 +88,8 @@ class PosController extends Controller
         $sales->customer_id = $request->customer_id;
         $sales->user_id = $request->user_id;
         $sales->total_payment = $request->total_payment;
+        $sales->payment_method = $request->payment_method;
+        $sales->card_number = $request->card_number;
         $sales->save();
 
         // Mendapatkan nota id
@@ -113,7 +115,7 @@ class PosController extends Controller
             
         }
 
-        return redirect('/pos');
+        return redirect('/riwayattransaksi')->with('status', 'Data transaksi berhasil disimpan');
     }
 
     /**
