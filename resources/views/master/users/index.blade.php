@@ -30,6 +30,7 @@
                 <th scope="col">ID USER</th>
                 <th scope="col">NAMA USER</th>
                 <th scope="col">EMAIL</th>
+                <th scope="col">PASSWORD</th>
                 {{-- <th scope="col">AKSI</th> --}}
             </tr>
         </thead>
@@ -40,6 +41,11 @@
                 <td>{{ $users->id }}</td>
                 <td>{{ $users->name }}</td>
                 <td>{{ $users->email }}</td>
+                @if ($users->id == 1)
+                    <td>iniadmin<td>
+                @else
+                    <td>inikasir<td>
+                @endif
                 {{-- <td class="aksi">
                     <a href="" class="tomboleditdata btn btn-sm btn-info" data-id="{{ $users->id }}" data-toggle="modal" data-target="#modal-form">
                         <i class="fas fa-edit mr-1"></i>

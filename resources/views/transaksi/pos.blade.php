@@ -26,8 +26,8 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="staff">Staff</label>
-                        <input type="hidden" value="1" name="user_id" id="user_id">
-                        <input type="text" class="form-control" readonly value="Sadam">
+                        <input type="hidden" value="{{ Auth::user()->id }}" name="user_id" id="user_id">
+                        <input type="text" class="form-control" readonly value="{{ Auth::user()->name }}">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="customer_id">Pelanggan</label>
