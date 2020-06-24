@@ -26,11 +26,12 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="staff">Staff</label>
-                        <input type="text" class="form-control" readonly value="Sadam" name="staff" id="staff">
+                        <input type="hidden" value="1" name="user_id" id="user_id">
+                        <input type="text" class="form-control" readonly value="Sadam">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="customer">Pelanggan</label>
-                        <select id="customer" class="form-control">
+                        <label for="customer_id">Pelanggan</label>
+                        <select id="customer_id" name="customer_id" class="form-control">
                             @foreach ($customers as $customers)
                             <option value="{{ $customers->id }}">{{ $customers->first_name }} {{ $customers->last_name }}</option>
                             @endforeach
@@ -101,10 +102,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="final_price" class="col-sm-4 col-form-label">Total Bayar (IDR)</label>
+                            <label for="total_payment" class="col-sm-4 col-form-label">Total Bayar (IDR)</label>
                             <div class="col-sm-4">
-                                <input type="text" readonly class="form-control-plaintext" id="final_price"
-                                    name="final_price" value="0">
+                                <input type="text" readonly class="form-control-plaintext" id="total_payment"
+                                    name="total_payment" value="0">
                             </div>
                         </div>
 
