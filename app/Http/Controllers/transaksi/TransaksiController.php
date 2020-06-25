@@ -17,7 +17,7 @@ class TransaksiController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -83,7 +83,7 @@ class TransaksiController extends Controller
 
         // $pdf = PDF::loadView('transaksi/detail', ['sales' => $sales], ['sales_detail' => $sales_detail]);
         $pdf = PDF::loadView('detailprint', ['sales' => $sales], ['sales_detail' => $sales_detail]);
-        return $pdf->download('coba.pdf');
+        return $pdf->download('invoice_tanistore.pdf');
     }
 
     /**
