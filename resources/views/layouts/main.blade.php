@@ -54,7 +54,7 @@
             <a href="../../index3.html" class="brand-link">
                 <img src="{{ asset('/img/logo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">TaniStore</span>
+                <span class="brand-text font-weight-light">Zona Sepatu</span>
             </a>
 
             <!-- Sidebar -->
@@ -138,12 +138,12 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item pl-3">
+                                {{-- <li class="nav-item pl-3">
                                     <a href="../tables/simple.html" class="nav-link">
                                         <i class="fas fa-user nav-icon"></i>
                                         <p>Edit Profil Saya</p>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 <li class="nav-item pl-3">
                                     <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
@@ -185,7 +185,7 @@
         <!-- /.content-wrapper -->
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2020 <a href="#">TaniStore</a>.</strong> All rights
+            <strong>Copyright &copy; 2020 <a href="#">Sadam</a>.</strong> All rights
             reserved.
         </footer>
 

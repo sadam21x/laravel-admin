@@ -18,11 +18,6 @@
     </div>
     @endif
 
-    {{-- <button type="button" class="tomboltambahdata btn btn-primary mb-3" data-toggle="modal" data-target="#modal-form">
-        <i class="fas fa-plus-square mr-1"></i>
-        TAMBAH KATEGORI BARU
-    </button> --}}
-
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -30,8 +25,6 @@
                 <th scope="col">ID USER</th>
                 <th scope="col">NAMA USER</th>
                 <th scope="col">EMAIL</th>
-                <th scope="col">PASSWORD</th>
-                {{-- <th scope="col">AKSI</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -41,27 +34,6 @@
                 <td>{{ $users->id }}</td>
                 <td>{{ $users->name }}</td>
                 <td>{{ $users->email }}</td>
-                @if ($users->id == 1)
-                    <td>iniadmin<td>
-                @else
-                    <td>inikasir<td>
-                @endif
-                {{-- <td class="aksi">
-                    <a href="" class="tomboleditdata btn btn-sm btn-info" data-id="{{ $users->id }}" data-toggle="modal" data-target="#modal-form">
-                        <i class="fas fa-edit mr-1"></i>
-                        EDIT
-                    </a>
-                    
-                    <form action="{{ url('/categories', $categories->id) }}" method="POST" class="d-inline">
-                        @method('delete')
-                        @csrf
-
-                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data kategori ini?');">
-                            <i class="fas fa-trash-alt mr-1"></i>
-                            DELETE
-                        </button>
-                    </form>
-                </td> --}}
             </tr>
             @endforeach
         </tbody>

@@ -13,7 +13,7 @@ class CategoriesSeeder extends Seeder
     {
 
         $category_name = array(
-            "Sayur", "Buah", "Padi-padian", "Kacang-kacangan"
+            "Sepatu Pria", "Sepatu Wanita"
         );
 
         foreach ($category_name as $category_name){

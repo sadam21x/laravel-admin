@@ -103,7 +103,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="price" class="col-form-label">Harga/Kg (Rp):</label>
+                        <label for="price" class="col-form-label">Harga (Rp):</label>
                         <input type="number" class="form-control @error('price') is-invalid @enderror" id="price"
                             name="price" value="{{ old('price') }}" autocomplete="off">
 
@@ -113,7 +113,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="stock" class="col-form-label">Stok Produk (Kg):</label>
+                        <label for="stock" class="col-form-label">Stok Produk:</label>
                         <input type="number" class="form-control @error('stock') is-invalid @enderror" id="stock"
                             name="stock" value="{{ old('stock') }}" autocomplete="off">
 
@@ -168,11 +168,11 @@
                     <h5 id="detail-name"></h5>
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label">Harga/Kg (Rp):</label>
+                    <label class="col-form-label">Harga (Rp):</label>
                     <h5 id="detail-price"></h5>
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label">Stok Produk (Kg):</label>
+                    <label class="col-form-label">Stok Produk:</label>
                     <h5 id="detail-stock"></h5>
                 </div>
                 <div class="form-group">

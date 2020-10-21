@@ -18,9 +18,9 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('name');
-            $table->float('price');
+            $table->double('price');
             $table->integer('stock');
-            $table->text('explanation');
+            $table->text('explanation')->nullable();
             $table->timestamps();
         });
     }
