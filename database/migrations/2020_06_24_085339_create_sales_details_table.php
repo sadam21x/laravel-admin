@@ -24,11 +24,11 @@ class CreateSalesDetailsTable extends Migration
 
             $table->integer('quantity');
 
-            $table->float('selling_price');
+            $table->double('selling_price');
 
-            $table->float('discount');
+            $table->double('discount');
             
-            $table->float('total_price');
+            $table->double('total_price');
 
             $table->timestamps();
         });

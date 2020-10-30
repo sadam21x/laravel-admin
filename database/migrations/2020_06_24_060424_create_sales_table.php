@@ -22,7 +22,7 @@ class CreateSalesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->float('total_payment');
+            $table->double('total_payment');
 
             $table->timestamps();
         });
